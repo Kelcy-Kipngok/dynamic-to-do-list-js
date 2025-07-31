@@ -3,36 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
-    // Define a function named addTask
     function addTask() {
-        // Retrieve and trim the value from the task input field
         const taskText = taskInput.value.trim();
 
-        // Check if taskText is not empty
         if (taskText === "") {
             alert("Please enter a task.");
         } else {
             // Create a new li element
             const li = document.createElement('li');
-
-            // Set its textContent to taskText
             li.textContent = taskText;
 
-            // Create a new button element
+            // Create a new button element for removing the task
             const removeButton = document.createElement('button');
-
-            // Set its textContent to “Remove”
             removeButton.textContent = "Remove";
 
-            // Give it a class name of ‘remove-btn’
-            removeButton.className = "remove-btn";
+            // Use classList.add as required
+            removeButton.classList.add('remove-btn');
 
-            // Assign an onclick event to the remove button
+            // Assign onclick event to remove the li element
             removeButton.onclick = function() {
                 taskList.removeChild(li);
             };
 
-            // Append the remove button to the li element
+            // Append the remove button to the li
             li.appendChild(removeButton);
 
             // Append the li to the task list
@@ -43,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add an event listener to addButton
     addButton.addEventListener('click', addTask);
 
-    // Add an event listener to taskInput for the Enter key
     taskInput.addEventListener('keypress', function(event) {
-        if (event.key === "Enter") {
+        if (event.key === 'Enter') {
             addTask();
         }
     });
